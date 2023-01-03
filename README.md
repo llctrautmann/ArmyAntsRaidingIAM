@@ -1,0 +1,2 @@
+# Raid Pattern Model of Army Ants Species
+The raid of army ant species is one of the most interesting self-organising phenomena within the family of ants. Thousands of ants leave their nest to swarm huge areas of land and raid other ants' nests or other arthropods to obtain resources and expand their population and territory. This simulation uses data form previous research to model this behaviour. In addition, differences in terrain as well as differences in food availability and pheromone evaporation rates are also modelled. 
