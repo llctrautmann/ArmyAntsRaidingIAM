@@ -1,0 +1,274 @@
+DEFINE FUNCTION model with these parameters: nodes,steps,ants_per_step,max_ants:
+    SET ants TO empty list
+    SET number of ants TO length of ants
+
+    SET matrix A with with the same values as the node numbers
+    SET start node TO  A(5,5)
+    SET nest nodes TO A(010,0:10)
+    SET no food zone TO A(0:10,0:10)
+
+    FOR node IN no_food_zone:
+        SET node food value to 0
+        SET node maximum capacity to 20
+        
+    SET start node maximum capacity to 10000
+
+    SET counter TO 0
+    
+    FOR each step IN parameter steps:
+        FOR each node in nodes:
+            EXECUTE class METHOD Evaporate
+            
+        IF LEN of list ants < paramter max_ants: 
+            FOR i IN range(ants_per_step): 
+                SET ant TO class Ants()
+                SET ant class method update_ant_number to counter
+                SET ant class method update_location to start node
+                ADD test_ant to list ants
+                increase counter by 1
+
+        FOR i IN RANGE LEN ants:
+            SET location TO ants location parameter
+            
+            IF food level of ant[i] EQUALS 0:
+
+                SET next_nodes TO forwards nodes paramter
+                SET pheromones left TO nodes[next_nodes[0]] paramter
+
+                TRY:
+                    SET pheromones right  TO nodes[next_nodes[1]] paramter
+                EXCEPT:
+                    ant drops food
+                    reset ants location paramter to start node
+                    continue
+
+                SET probability_left TO FUNCTION calculate_next_step with parameter pheromones left AND pheromones right
+
+                IF step < 10:
+                    SET probability for next step TO 1
+                ELSE:
+                    SET probability for next step TO FUNCTION take_next_step with parameter pheromones left AND pheromones right
+
+                IF random number < probability for next step:
+                    IF random number < probability for probability_left:
+                        IF next_node 0 capacity parameter < next_node 0 maximum capacity:
+                            reduce capacity of current node by 1
+                            update ants location to next_node 0
+                            
+                            IF next_node 0 pheromoes >= 100:
+                                PASS
+                            ELSE:
+                                Increse next_node 0 pheromones by 2 
+                                
+                            increase next_node 0 capacity by 1
+                            
+                            IF food level of next_node 0 is not 0:
+                                update ants food parameter to 1
+                                decrease next_node 0 food level by 1 
+
+                        ELSEIF next_node 1 capacity parameter < next_node 1 maximum capacity:
+                            reduce capacity of current node by 1
+                            update ants location to next_node 0
+                            
+                            IF next_node 1 pheromoes >= 100:
+                                PASS
+                            ELSE:
+                                Increse next_node 1 pheromones by 2 
+                                
+                            increase next_node 1 capacity by 1
+                            
+                            IF food level of next_node 1 is not 0:
+                                update ants food parameter to 1
+                                decrease next_node 1 food level by 1 
+                                
+                        ELSE:
+                            continue / do nothing
+
+
+                    ELSEIF random number > probability for next step:
+
+                        IF next_node 1 capacity parameter < next_node 1 maximum capacity:
+                            reduce capacity of current node by 1
+                            update ants location to next_node 0
+                            
+                            IF next_node 1 pheromoes >= 100:
+                                PASS
+                            ELSE:
+                                Increse next_node 1 pheromones by 2 
+                                
+                            increase next_node 1 capacity by 1
+                            
+                            IF food level of next_node 1 is not 0:
+                                update ants food parameter to 1
+                                decrease next_node 1 food level by 1 
+
+
+                        ELSEIF next_node 0 capacity parameter < next_node 0 maximum capacity:
+                            reduce capacity of current node by 1
+                            update ants location to next_node 0
+                            
+                            IF next_node 0 pheromoes >= 100:
+                                PASS
+                            ELSE:
+                                Increse next_node 0 pheromones by 2 
+                                
+                            increase next_node 0 capacity by 1
+                            
+                            IF food level of next_node 0 is not 0:
+                                update ants food parameter to 1
+                                decrease next_node 0 food level by 1
+                                
+                        ElSE:
+                            continue
+                    ELSE:
+                        continue
+                ELSE:
+                    continue
+
+            ELSEIF food level of ant[i] EQUALS 1:
+                SET next_nodes TO backwards nodes paramter
+                SET pheromones left TO next_node 0 pheromone paramter
+
+                TRY:
+                    SET pheromones right  TO next node 1 paramter
+                EXCEPT:
+                    ant drops food
+                    reset ants location paramter to start node
+                    continue
+
+                SET probability_left TO FUNCTION calculate_next_step with parameter pheromones left AND pheromones right
+                SET probability for next step TO FUNCTION take_next_step with parameter pheromones left AND pheromones right
+
+                IF probability_l EQUALS probability_r:
+                    ants drops food
+                    SET ants location to start node
+                    reset current nodes pheromones to 0
+
+                IF ant location < start_node:
+                    ants drops food
+                    SET ants location to start node
+                    reset current nodes pheromones to 0
+
+                IF random number < probability for next step:
+                    IF random number < probability for probability_left:
+                        IF capacity next node 0 < maximum capacity next node 0
+                            reduce capacity of current node by 1
+                            update ants location to next_node 0
+
+                            IF next node 0 IN nest_nodes:
+                                ant drops food
+                                start node increase food by 1
+
+                            IF next node 0 pheromoes >= 100:
+                                PASS
+                            ELSE:
+                                increase next nodes pheromoes to 10
+                            increase next node 0 capacity by 1 # update next nodes capacity
+
+                        ELSEIF capacity next node 1 < maximum capacity next node 1:
+                            reduce capacity of current node by 1
+                            update ants location to next_node 1
+
+                            IF next node 1 IN nest_nodes:
+                                ant drops food
+                                start node increase food by 1
+
+                            IF next node 1 pheromoes >= 100:
+                                PASS
+                            ELSE:
+                                increase next nodes pheromoes to 10
+                            increase next node 1 capacity by 1
+
+                        ELSE:
+                            continue
+
+
+                    ELSEIF random number > probability for next step:
+                    IF random number < probability for probability_left:
+                        IF capacity next node 1 < maximum capacity next node 1
+                            reduce capacity of current node by 1
+                            update ants location to next_node 0
+
+                            IF next node 1 IN nest_nodes:
+                                ant drops food
+                                start node increase food by 1
+
+                            IF next node 1 pheromoes >= 100:
+                                PASS
+                            ELSE:
+                                increase next nodes pheromoes to 10
+                            increase next node 1 capacity by 1 # update next nodes capacity
+
+                        ELSEIF capacity next node 0 < maximum capacity next node 0:
+                            reduce capacity of current node by 1
+                            update ants location to next_node 1
+
+                            IF next node 0 IN nest_nodes:
+                                ant drops food
+                                start node increase food by 1
+
+                            IF next node 0 pheromoes >= 100:
+                                PASS
+                            ELSE:
+                                increase next nodes pheromoes to 10
+                            increase next node 0 capacity by 1
+
+                        ELSE:
+                            continue
+                    ELSE:
+                        continue
+                ELSE:
+                    continue
+            ELSE:
+                continue
+
+    RETURN nodes
+
+
+
+DEFINE ALGORITHM:
+    INPUT: nodes, steps, ants_per_step, max_ants
+    OUTPUT: nodes
+    SET variables 
+    
+    FOR step in steps
+    	create 10 ants per step IF number of ants < max ants
+        FOR ants in model:
+            IF ant food level == 0 and moving probability < random number between 0 and 1:
+				calculate next node switching probabilities from pheromones
+                IF capacity < max capacity next node:
+                	IF probabilities from pheromones next node 0 < random number between 0 and 1:
+		    			set location to new node
+                    	decrease capacity of last node
+                    	increase capacity of next node 0
+                    	check for food in next node
+                        IF food not equal 0:
+                            pick up food
+                    	increase pheromones of next node by 2
+                ELSEIF:
+                    do as above with next node 1
+                ELSE:
+                    	do nothing
+
+            ELSEIF ant food level != 0 and moving probability < random number between 0 and 1:
+				calculate next node switching probabilities from pheromones
+				IF switching probabilities EQUAL:
+		    		drop food
+		    		reset location to nest
+				IF next node location < nest node
+		    		drop food
+		    		reset location to nest
+		    
+                IF capacity < max capacity next node:
+                	IF pheromones next node 0 < random number between 0 and 1:
+                    	set location to new node
+                    	decrease capacity of last node
+                    	increase capacity of next node 0
+		    			IF next node nest:
+							drop food
+	 	    		increase pheromones of next node by 10
+				ELSEIF capacity < max capacity next node 1:
+		    		do as above with next node 1
+                ELSE:
+                	do nothing
+                    
