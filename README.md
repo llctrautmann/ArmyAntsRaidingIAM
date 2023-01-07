@@ -23,4 +23,4 @@ This study conducted four experiments. Initially, the results from the original 
 
 ![Result Random Capacity 1](NxR_plot_1673099532_in_paper.jpeg)
 
-![Result Random Capacity 2](NxR_plot_1673099943_in_paper.jpeg)
+![Result Random Capacity 2](NxR_plot_1673099943_in_paper.jpeggit ad)
