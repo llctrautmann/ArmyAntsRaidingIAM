@@ -15,3 +15,12 @@ Initially, at each time step in the model, the level of pheromones available is 
  
 ## Experiments in this paper
 This study conducted four experiments. Initially, the results from the original paper by Deneubourg and colleagues (1989) are replicated. Furthermore, the model is extended to show the effects of three different kinds of terrain changes on the foraging patterns of army ants. Firstly, the effect of random noise is demonstrated. Secondly, the effect of larger impenetrable objects in the pathway of the ants is demonstrated. Lastly, non-random Perlin noise is used to construct more realistic terrain. The resulting terrain is used to demonstrate its effects on the foraging patterns in the ant simulation.
+
+# Results
+![Result E. borchelli ](images/exp_1_plot_1672955529_in_paper.png)
+
+![Result E. Rapax](images/0x00_plot_1673093793_in_paper.png)
+
+![Result Random Capacity 1](NxR_plot_1673099532_in_paper.png)
+
+![Result Random Capacity 2](NxR_plot_1673099943_in_paper.png)
