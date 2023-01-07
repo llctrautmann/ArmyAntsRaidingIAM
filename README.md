@@ -19,5 +19,7 @@ This study conducted four experiments. Initially, the results from the original 
 # Results
 ![Result E. borchelli](images/exp_1_plot_1672955529_in_paper.jpeg)
 ![Result E. Rapax](images/0x00_plot_1673093793_in_paper.jpeg)
-![Result Random](NxR_plot_1673099532_in_paper.jpeg)
-![Result Random_two](NxR_plot_1673099943_in_paper.jpeg)
+
+![Result Random](images/NxR_plot_1673099532_in_paper.jpeg)
+
+![Result Random_two](images/NxR_plot_1673099943_in_paper.jpeg)
