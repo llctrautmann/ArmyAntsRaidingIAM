@@ -23,3 +23,6 @@ This study conducted four experiments. Initially, the results from the original 
 ![Result Random](images/NxR_plot_1673099532_in_paper.jpeg)
 
 ![Result Random_two](images/NxR_plot_1673099943_in_paper.jpeg)
+
+![Random three](images/RxT_plot_1673108218_in_paper.jpeg)
+![Random four](images/RxT_plot_1673108392_in_paper.jpeg)
