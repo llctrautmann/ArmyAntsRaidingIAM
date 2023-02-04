@@ -17,12 +17,13 @@ Initially, at each time step in the model, the level of pheromones available is 
 This study conducted four experiments. Initially, the results from the original paper by Deneubourg and colleagues (1989) are replicated. Furthermore, the model is extended to show the effects of three different kinds of terrain changes on the foraging patterns of army ants. Firstly, the effect of random noise is demonstrated. Secondly, the effect of larger impenetrable objects in the pathway of the ants is demonstrated. Lastly, non-random Perlin noise is used to construct more realistic terrain. The resulting terrain is used to demonstrate its effects on the foraging patterns in the ant simulation.
 
 # Results
+The following figures show exemplary results from the study. For the full results please consult the pdf. To summarise, delta like raiding structures were easy to reproduce while nest raiding species were very difficult to replicate in silico. 
+
 ![Result E. borchelli](images/exp_1_plot_1672955529_in_paper.jpeg)
 ![Result E. Rapax](images/0x00_plot_1673093793_in_paper.jpeg)
 
-![Result Random](images/NxR_plot_1673099532_in_paper.jpeg)
+# Critical assessment of the Model and Future Research
 
-![Result Random_two](images/NxR_plot_1673099943_in_paper.jpeg)
+While the model is undoubtedly potent in its explanation of army ant foraging patterns, some aspects could be improved in the future. Each node in the model has only two connected nodes in each direction. Thereby the spatial moveability of each ant is severely limited. Because of the limitations in available movement options, the model displays a tendency of the raid to break apart when food sources are not available at most points in the network. This can be demonstrated with a theoretical example. A node in the network with a maximum capacity of 20 and a food level of 400 can only be approach by 40 ants at a maximum. If the two nodes leading to the food node at their capacity limit, all other foraging ants in the network will be redirected to the adjacent node which does then prevent the ant from reaching the food node again without returning to the nest first. In this publication, these effects were somewhat mitigated by creating nest cluster in which multiple nodes all have an identical food value. This leads to more ants finding a nest and better representation of the actual underlying behaviour. To fully mitigate the issue however, a future model would be well advised to increase the number of connections between the nodes and thereby let individual points be reached from more positions. Hence overall, the model is good at modelling army ant raids for ants that hunt other insects overground leading to expanding river delta formations. However, modelling nest raids and other more targeted raiding strategies can only be recreated with limited success. 
 
-![Random three](images/RxT_plot_1673108218_in_paper.jpeg)
-![Random four](images/RxT_plot_1673108392_in_paper.jpeg)
+For a full discussion of the results please consult the pdf. 
